@@ -9,27 +9,31 @@
     }
   },
   "sendEmail": {
-    "address": "2750633066@qq.com",
+    "address": "2392920524@qq.com",
     "subject": "daily email"
   },
   "errorEmail": {
-    "address": "1122334455@qq.com"
+    "address": "2357823678@qq.com"
   },
-  "address": "china/zhejiang/hangzhou",
+  "address": "china/yunnan/honghe-county",
   "commemoration": [
     {
-      "name": "你的生日",
+      "name": "国庆节",
       "date": "10-01",
-      "advance": 15
+      "advance": 150
+    },
+    {
+      "name": "开学",
+      "date": "10-09",
+      "advance": 150
     }
   ],
   "dataCard": [
     "天气",
     "纪念日",
+    "Words",
+    "CuteCat",
     "ONE",
-    "知乎日报",
-    "微博热搜",
-    "豆瓣电影",
-    "豆瓣读书"
+    "知乎日报"
   ]
 }
