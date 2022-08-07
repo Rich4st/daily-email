@@ -106,7 +106,7 @@ const cardCss = `/* 卡片样式 */
   display: none;
 }
 .card-content {
-  height: 150px;
+  height: fit-content;
   overflow: hidden;
   transition: height .3s;
 }
@@ -119,18 +119,6 @@ const cardCss = `/* 卡片样式 */
   position: absolute;
   right: 5px;
   top: 3px;
-}
-.show:checked ~ .card-content {
-  height: fit-content;
-}
-.hide:checked ~ .card-content {
-  height: 150px;
-}
-.show:checked ~ .label-show {
-  display: none;
-}
-.show:checked ~ .label-hide {
-  display: inline;
 }`;
 const renderHtml = (data) => {
   let div = '';

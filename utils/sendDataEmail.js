@@ -1,3 +1,7 @@
+/**
+ * @description 配置 nodemailer 发送邮件
+ * https://github.com/nodemailer/nodemailer
+ */
 const {
   mailOption: { auth },
   sendEmail
