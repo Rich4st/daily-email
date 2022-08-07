@@ -7,6 +7,7 @@ const card_one = (data) => {
       </div>
       <span style="font-size:12px">${title}</span>
     </div>`;
-  return renderCard('ONE', '#eb7350', one);
+  // &#10024; -> ✨
+  return renderCard('&#10024;', '#eb7350', one);
 };
 module.exports = card_one;

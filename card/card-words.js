@@ -13,6 +13,7 @@ const card_words = (data) => {
       <br>
       <span style="font-size:12px">读音:${pronunciation}</span>
     </div>`;
-  return renderCard('WORDS', '#259645', words);
+  // &#128221; -> 📝
+  return renderCard('&#128221;', '#259645', words);
 };
 module.exports = card_words;

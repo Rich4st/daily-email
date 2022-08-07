@@ -18,6 +18,7 @@ const card_commemoration = ({ data }) => {
     '<div style="color:#333;font-weight:300;display:flex;justify-content: center;align-items: center;">没有临近的纪念日</div>'
   }
   </div>`;
-  return renderCard('纪念日', '#ff1744', commemoration, '');
+  // &#128467; -> 🗓
+  return renderCard('&#128467;', '#ff1744', commemoration, '');
 };
 module.exports = card_commemoration;

@@ -121,7 +121,7 @@ const cardCss = `/* 卡片样式 */
   top: 3px;
 }
 .show:checked ~ .card-content {
-  height: 100%;
+  height: fit-content;
 }
 .hide:checked ~ .card-content {
   height: 150px;

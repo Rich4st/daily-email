@@ -10,7 +10,7 @@ const renderCard = (title, color, data, cardKey, icon) => {
       <div class='card-title' ${
         !icon ? `style='border-color:${color}'` : `style='border:none'`
       }>
-        ${icon || ''}&ensp;${title}
+        ${icon || ''}&ensp;<span style="font-size: 20px">${title}</span>
       </div>
       ${showOhide}
       <div class='card-content'>${data}</div>
@@ -19,7 +19,7 @@ const renderCard = (title, color, data, cardKey, icon) => {
     <div class='card-title' ${
       !icon ? `style='border-color:${color}'` : `style='border:none'`
     }>
-    ${icon || ''}&ensp;${title}
+    ${icon || ''}&ensp;<span style="font-size: 20px">${title}</span>
     </div>
     ${data}
   </div>`;

@@ -43,6 +43,7 @@ const card_weather = ({
   <span>${tips}</span>
   </div>
     </div>`;
-  return renderCard('天气', '#000', weather);
+  // &#127780; -> 🌤
+  return renderCard('&#127780;', '#000', weather);
 };
 module.exports = card_weather;

@@ -9,7 +9,7 @@
     }
   },
   "sendEmail": {
-    "address": "2392920524@qq.com",
+    "address": "2750633066@qq.com",
     "subject": "daily email"
   },
   "errorEmail": {
@@ -18,13 +18,18 @@
   "address": "china/yunnan/honghe-county",
   "commemoration": [
     {
-      "name": "国庆节",
+      "name": "国庆节&#127881;",
       "date": "10-01",
       "advance": 150
     },
     {
-      "name": "开学",
+      "name": "开学&#127891;",
       "date": "10-09",
+      "advance": 150
+    },
+    {
+      "name": "生日&#127874;",
+      "date": "12-04",
       "advance": 150
     }
   ],
