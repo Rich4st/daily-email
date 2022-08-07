@@ -7,7 +7,7 @@ const card_commemoration = ({ data }) => {
     <span ${v.diff === 0 ? 'class="today"' : ''}>${v.name}</span>
     ${
       v.diff > 0
-        ? `<span>还有&ensp;<b style="color:${color};font-size:15px;width: 40px;display: inline-block;">${v.diff}天</b></span>`
+        ? `<span>还有&ensp;<b style="color:${color};font-size:15px;width: 50px;display: inline-block;">${v.diff}天</b></span>`
         : `<span class="today">今天</span>`
     }
   </div>`;
