@@ -1,98 +1,147 @@
-# everyday-email
+# Daily Email
 
-## 主要功能
+## 🪄 主要功能
 
-通过爬取：天气、微博、知乎、ONE、豆瓣电影、豆瓣读书，将数据整合成邮件，定时发送。
+* 爬取天气、ONE、知乎、猫咪照片、每日一个英语单词并将数据整合为邮件并定时发送。
+* 纪念日：配置纪念日提醒。
+* ...
 
-## 示例
 
-<div>
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p1.png?raw=true" width="187px" height="406px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p2.png?raw=true" width="187px" height="406px" />&emsp;
- <img src="https://github.com/xuguanqun/everyday-email/blob/master/images/p3.png?raw=true" width="187px" height="406px" />&emsp;
-</div>
- 
-## 开始
-```node
+
+## 🤖 效果
+
+![img](http://182.61.149.102/dailyEmail.jpg)
+
+
+
+## 🚀 开始
+
+* 安装依赖
+
+```powershell
 npm install
+```
+
+* 运行 需要先切到项目目录下
+
+```powershell
 node index.js
 ```
-## 使用pm2
-```
-pm2 start index.js --name everyday-email
-```
-## 配置
-> 所有配置项均在 `config.json` 文件进行配置
-### 1.配置邮箱信息
-``` json
-{
-  "mailOption": {
-    "auth": {
-      "user": "1234567@qq.com",
-      "pass": "abcdefg"
-    }
-  },
-  "sendEmail": {
-    "address": "7654321@qq.com",
-    "subject": "" 
-  },
-  "errorEmail": {
-    "address": "1122334455@qq.com"
-  },
-}
-```
-**user** 填写的是你的qq邮箱  
-**pass** 填写的是qq邮箱的授权码，不是qq密码。（登陆网页qq邮箱，进入设置-账户-生成授权码，跟着步骤，发送短信获取）  
-**subject** 邮件的标题，默认为ONE的每日一句  
-**sendEmail.address** 发送目的地邮箱  
-**errorEmail.address** 程序错误时，接收错误信息邮箱
 
-默认只支持配置 qq 邮箱，如需配置其他邮箱，参考 [nodemailer](https://github.com/nodemailer/nodemailer 'nodemailer') 文档，自行配置
+### 服务器中使用pm2
 
-### 2.修改地址（获取天气时使用）
+* 运行一个进程，通过`--name`重命名为foo，`--watch`监听该进程
+
+```powershell
+pm2 start index.js --name foo --watch
+```
+
+
+
+## 🛠 配置文件
+
+> 配置文件`config.json`在`config`目录下
+
+### 配置邮件**发送人**
 
 ```json
-{
-  "address": "china/zhejiang/wenzhou"
+"auth": {
+    "user": "2357823678@qq.com",
+    "pass": "**********jxf"
 }
 ```
 
-默认为杭州  
-你可访问 https://tianqi.moji.com/weather/china/zhejiang/wenzhou 查看效果  
-进入 https://tianqi.moji.com/weather 选择你所在的城市，取`url`中`weather`之后的字符串即可
+`user`: 填入你的邮箱
 
-### 3.纪念日或是事项提醒（可选）
+`password`: **不是**QQ密码。网页登录QQ邮箱 `设置` -> `账户`-> `POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务`  -> `生成授权码`
+
+
+
+### 配置**收件人**
 
 ```json
-{
-  "commemoration": [
+"sendEmail": {
+    "address": "2750633066@qq.com",
+    "subject": "daily email"
+}
+```
+
+`address`: 收件人邮箱
+
+`subject`： 邮件主题/标题
+
+**Tips:** **不支持**配置多个收件人
+
+
+
+### 配置爬取**天气**的城市
+
+```json
+"address": "china/fujian/xiamen"
+```
+
+>❗️
+>
+>除了部分城市，基本只要只要配置省份拼音和城市拼音即可
+>
+>可以在[墨迹天气](https://tianqi.moji.com/weather/)中查询所处城市的名称
+
+
+
+### 配置重要**日期提醒**
+
+```json
+"commemoration": [
     {
-      "name": "你的生日",
-      "date": "10-26",
-      "advance": 15
+      "name": "国庆节&#127881;",
+      "date": "10-01",
+      "advance": 150
+    },
+    {
+      "name": "开学&#127891;",
+      "date": "10-09",
+      "advance": 150
     }
-  ]
-}
+  ],
 ```
 
-`date` 无需填写年份，`advance` 为提前多少天提醒
+`name`: 日期名称；中文后面的代码是**Emoji**的。可以在[w3schools](https://www.w3schools.com/charsets/ref_emoji.asp)查询Emoji对应的Html Code
 
-### 4.修改执行时间
+`date`: 日期 ；不要配置年份，默认为今年
 
-默认是在每天的 8 点 00 分 执行
+`advance`: 配置需要提前多少天发送邮件提醒
+
+
+
+### 配置需要渲染的卡片
 
 ```json
-{
-  "interval": "00 20 08 * * *"
-}
+  "dataCard": [
+    "天气",
+    "纪念日",
+    "知乎日报",
+    "Words",
+    "CuteCat",
+    "ONE"
+  ]
 ```
 
-例：修改为 8 点 20 分
+* 删除数组中的元素就**不会**渲染对应的卡片
 
-格式说明
 
-```java
-00   15   08   *    *    *
+
+### 配置邮件发送时间
+
+```json
+"interval": "00 20 08 * * *"
+```
+
+例子中配置的是每天早上8：20发送
+
+* 格式说明
+
+```json
+00   20   08   *    *    *
 *    *    *    *    *    *
 ┬    ┬    ┬    ┬    ┬    ┬
 │    │    │    │    │    │
@@ -104,26 +153,30 @@ pm2 start index.js --name everyday-email
 └───────────────────────── second (0 - 59, OPTIONAL)
 ```
 
-具体请根据 [node-schedule](https://github.com/node-schedule/node-schedule 'node-schedule') 文档自行修改
+更多信息参考[node-schedule](https://github.com/node-schedule/node-schedule)官方文档配置
 
-### 5.配置卡片
 
-```json
-{
-  "dataCard": ["微博热搜", "天气", ...]
-}
-```
 
-数据将会根据 `dataCard` 配置有序进行渲染，可自行配置内容以及顺序
+## 📝 关于
 
-## 关于
+* 环境
 
-项目代码非常简单，供学习娱乐使用。
+> **Node**版本: v14.16.0
+>
+> **Npm**版本: 6.14.11
 
-### 项目所使用到的包
+* 项目使用到的包
 
-- [request](https://github.com/request/request 'request')
-- [cheerio](https://github.com/cheeriojs/cheerio 'cheerio')
-- [iconv-lite](https://github.com/ashtuchkin/iconv-lite 'iconv-lite')
-- [node-schedule](https://github.com/node-schedule/node-schedule 'node-schedule')
-- [nodemailer](https://github.com/nodemailer/nodemailer 'nodemailer')
+> [cheerio](https://cheerio.js.org/) 专为服务器设计的核心 jQuery 的快速、灵活和精简的实现。
+>
+> [iconv-lite](https://www.npmjs.com/package/iconv-lite) 纯JS字符编码转换
+>
+> [node-schedule](node-schedule) 定时作业和调度
+>
+> [request](https://www.npmjs.com/package/request) 简化的 HTTP 客户端
+>
+> [nodemailer](https://github.com/nodemailer/nodemailer) 使用 Node.JS 发送电子邮件——就像蛋糕一样简单！
+
+* 特别感谢 ❗️❗️❗️
+
+[everyday-email](https://github.com/xuguanqun/everyday-email)
