@@ -5,6 +5,7 @@ const commemorationDay = require('./commemoration-day');
 const cuteCate = require('./cat')
 const words = require('./words');
 const zhihuDaily = require('./zhihu');
+const weiBo = require('./weibo');
 module.exports = {
   weather,
   one,
@@ -12,5 +13,6 @@ module.exports = {
   commemorationDay,
   cuteCate,
   words,
-  zhihuDaily
+  zhihuDaily,
+  weiBo,
 };

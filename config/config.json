@@ -9,7 +9,7 @@
     }
   },
   "sendEmail": {
-    "address": "2750633066@qq.com",
+    "address": "2392920524@qq.com",
     "subject": "daily email"
   },
   "errorEmail": {
@@ -36,9 +36,10 @@
   "dataCard": [
     "天气",
     "纪念日",
-    "知乎日报",
     "Words",
     "CuteCat",
-    "ONE"
+    "ONE",
+    "微博热搜",
+    "知乎日报"
   ]
 }
