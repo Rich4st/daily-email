@@ -6,7 +6,7 @@ const API = require('./utils/api');
 const schedule = require('node-schedule');
 (function start() {
   // default 8:00 everyday
-  const timer = schedule.scheduleJob(interval || '00 30 07 * * *', () => {
+  const timer = schedule.scheduleJob(interval || '00 46 22 * * *', () => {
     mission();
   });
 })();
